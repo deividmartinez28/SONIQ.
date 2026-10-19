@@ -5,14 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="SONIQ One: disfruta tu música con un diseño minimalista y una experiencia inalámbrica.">
   <title>SONIQ One — Tu mundo. Tu sonido.</title>
-  <!-- INTEGRACIÓN GTM:
-       Cuando crees el contenedor, pega aquí el snippet oficial que GTM genera.
-       No uses un ID de ejemplo. Consulta README.md.
+
   -->
   <link rel="stylesheet" href="styles.css">
   <script>
-    // Consent Mode básico: estado inicial denegado para etiquetas no esenciales.
-    // Completa la integración con el CMP y GTM antes de publicar.
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', {
@@ -28,9 +25,6 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- INTEGRACIÓN GTM (noscript):
-       Pega aquí el bloque <noscript> oficial de GTM cuando tengas el ID real.
-       No publiques con un ID de ejemplo.
   -->
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
@@ -48,8 +42,6 @@
   </header>
 
   <main id="contenido">
-    <!-- 1. HEADER: navegación en el encabezado -->
-    <!-- 2. HERO -->
     <section class="hero section" id="inicio">
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -155,6 +147,8 @@
           <div class="cart-summary" id="cartSummary" aria-live="polite">Tu bolsa está vacía.</div>
           <div class="purchase-perks"><span>✓ Compra demostrativa</span><span>✓ Sin cobro real</span></div>
           <form class="lead-form" id="orderForm">
+            <script src="https://js.hsforms.net/forms/embed/52189647.js" defer></script>
+              <div class="hs-form-frame" data-region="na1" data-form-id="e13fe0c7-5461-42b4-a90c-d6c25ca62160" data-portal-id="52189647"></div>
             <h3>Formulario de compra e información</h3>
             <p>Déjanos tus datos para registrar tu interés en SONIQ One. Esta versión valida el formulario localmente. Para guardar contactos en HubSpot, crea el formulario en tu cuenta y reemplaza este formulario por el código de inserción que HubSpot genere.</p>
             <label for="fullName">Nombre completo</label><input id="fullName" name="name" autocomplete="name" required placeholder="Escribe tu nombre completo">
