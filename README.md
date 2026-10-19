@@ -90,3 +90,17 @@ Sustituye los placeholders por IDs de las cuentas de clase, verifica las integra
 
 ## Guía de conexión real
 Consulta `INTEGRACIONES.md` para crear desde cero HubSpot, Google Tag Manager y GA4, copiar los IDs reales, configurar las etiquetas y validar cada conexión. Ninguna integración externa queda activa hasta completar y probar esos pasos.
+
+
+## Integración de HubSpot
+
+El formulario de interés de la sección de compra usa el formulario incrustado de HubSpot (portal `52189647`, formulario `e13fe0c7-5461-42b4-a90c-d6c25ca62160`). El código de inserción se encuentra en `index.html`; `script.js` registra el evento `generate_lead` solo después de detectar un envío exitoso de HubSpot, sin enviar nombre, correo ni teléfono a herramientas de analítica.
+
+Para verificarlo, publica los cambios, abre la página publicada, envía una prueba con datos de prueba y confirma que el contacto aparece en HubSpot. No hagas pruebas con datos de terceros sin autorización.
+
+Google Tag Manager y GA4 todavía no se han instalado porque no se han proporcionado el ID de contenedor `GTM-...` ni el ID de medición `G-...`.
+
+
+## Google Tag Manager
+
+Se ha añadido el contenedor GTM `GTM-KS9N882P` al archivo `index.html`: el script principal está en `<head>` y el fragmento `noscript` inmediatamente después de abrir `<body>`. Para que los eventos lleguen a Google Analytics 4, todavía hay que crear/configurar la propiedad GA4, añadir la etiqueta de Google en GTM y configurar los activadores y etiquetas de eventos.

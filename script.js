@@ -70,21 +70,33 @@
   }
   $('#headerCart').addEventListener('click', beginCheckout);
 
-  // Lead form: demo only. Replace with HubSpot embedded form or Forms API workflow.
-  $('#orderForm').addEventListener('submit', event => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (!form.reportValidity()) return;
-    const name = $('#fullName').value.trim();
-    const email = $('#email').value.trim();
-    const phone = $('#phone') ? $('#phone').value.trim() : '';
-    const contactReason = $('#contactReason') ? $('#contactReason').value : 'unspecified';
-    if (!$('#privacyConsent').checked) return;
-    track('generate_lead', { form_name: 'soniq_order_interest', method: 'website_demo', interest_type: contactReason });
-    $('#formMessage').textContent = `Gracias, ${name}. Recibimos tu solicitud de demostración. No se envió a HubSpot.`;
-    form.reset();
-    showToast('Formulario validado en modo demostración.');
-    console.info('Demo lead; no data transmitted:', { name, email, phone, contactReason });
+  // HubSpot: track only successful form submissions. Never send contact details to GA4.
+  let lastHubSpotLeadAt = 0;
+  function trackHubSpotLead() {
+    const now = Date.now();
+    // Prevent the modern event and legacy postMessage callback from counting the same submission twice.
+    if (now - lastHubSpotLeadAt < 2000) return;
+    lastHubSpotLeadAt = now;
+    track('generate_lead', { form_name: 'soniq_hubspot_interest', method: 'hubspot' });
+    const formMessage = $('#hubspotLeadForm .form-message');
+    if (formMessage) formMessage.textContent = '¡Gracias! HubSpot recibió tu solicitud.';
+    showToast('¡Gracias! Recibimos tu solicitud.');
+  }
+
+  // Current HubSpot embedded forms event.
+  document.addEventListener('hs-form-event:on-submission:success', trackHubSpotLead);
+
+  // Compatibility with HubSpot embeds that emit the legacy callback via postMessage.
+  window.addEventListener('message', event => {
+    if (!event || !event.data) return;
+    let data = event.data;
+    if (typeof data === 'string') {
+      try { data = JSON.parse(data); } catch (_) { return; }
+    }
+    if (data && data.type === 'hsFormCallback' && data.eventName === 'onFormSubmitted') {
+      const formId = data.id || data.data?.formGuid;
+      if (!formId || formId === 'e13fe0c7-5461-42b4-a90c-d6c25ca62160') trackHubSpotLead();
+    }
   });
 
   $('#newsletterForm').addEventListener('submit', event => {

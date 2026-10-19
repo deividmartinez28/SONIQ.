@@ -4,3 +4,15 @@
 @media(max-width:850px){.container{width:min(100% - 36px,650px)}.section{padding:72px 0}.nav-wrap{height:68px;gap:14px}.menu-toggle{display:block;margin-left:auto}.main-nav{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;padding:18px 24px 24px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}.main-nav.open{display:flex}.hero-grid,.product-grid,.purchase-grid,.faq-layout{grid-template-columns:1fr;gap:38px}.hero-grid{min-height:0}.hero-copy{padding-top:15px}.hero-visual{min-height:410px}.hero h1{font-size:clamp(50px,12vw,72px)}.benefit-grid,.testimonial-grid{grid-template-columns:1fr}.benefit-card{min-height:0}.cta-strip-inner,.newsletter-inner{align-items:flex-start;flex-direction:column}.product-grid{gap:35px}.detail-art{min-height:350px}.purchase-visual{position:relative;top:auto;min-height:390px}.purchase-copy{max-width:none}.faq-layout{gap:30px}.newsletter-form{min-width:0;width:100%}.footer-main{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.cookie-banner{align-items:flex-start;flex-direction:column;gap:15px}.cookie-actions{width:100%}.cookie-actions .button{flex:1}.newsletter-inner{gap:22px}}
 @media(max-width:480px){.container{width:calc(100% - 32px)}.nav-wrap{gap:10px}.brand{font-size:22px}.cart-link{padding:8px 10px;font-size:11px}.hero{padding-top:38px}.hero-visual{min-height:330px;border-radius:22px}.headphones-art{transform:scale(.82) rotate(-9deg)}.hero-meta{gap:8px}.hero-meta span{font-size:9px}.hero-actions .button{width:100%}.section-heading h2,.faq-intro h2{letter-spacing:-1.5px}.cta-strip-inner{gap:25px}.cta-strip .button{width:100%}.purchase-copy h2{font-size:40px}.newsletter-form{grid-template-columns:1fr}.newsletter-form button{width:100%}.footer-main{gap:25px 18px}.footer-bottom{flex-direction:column;gap:7px}.cookie-banner{bottom:8px;width:calc(100% - 16px);padding:16px}.cookie-actions{flex-direction:column}.modal-card{padding:28px 22px}.feedback-tab{top:auto;bottom:100px}.detail-art{min-height:300px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* HubSpot embedded form */
+#hubspotLeadForm .hs-form-frame {
+  display: block;
+  width: 100%;
+  min-height: 280px;
+  margin-top: 18px;
+}
+#hubspotLeadForm .hs-form-frame iframe {
+  width: 100% !important;
+  max-width: 100%;
+}
